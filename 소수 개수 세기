@@ -1,0 +1,13 @@
+a=list(map(int,input().split()))
+
+for i in a:
+  find_index = a.index(i)
+  for j in range (2,int(i**0.5)+1):
+    if i%j==0:
+      a[find_index]=False
+      break
+    else : 
+      a[find_index]=True
+
+print(a)
+print("소수의 개수는"+str(a.count(True))+"입니다.")
