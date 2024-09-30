@@ -1,0 +1,42 @@
+def solution(video_len, pos, op_start, op_end, commands):
+    
+    #초로만 나타내기
+    def time_to_sec(time):
+        result_time=list(map(int,time.split(':')))
+        sec = result_time[0]*60+result_time[1]
+        return sec
+    
+    initial_sec=time_to_sec(pos)
+    
+    for command in commands:
+        
+        if time_to_sec(op_start)<=initial_sec<=time_to_sec(op_end):
+            initial_sec=time_to_sec(op_end)
+        
+        if command =='prev':
+            if initial_sec<=10:
+                initial_sec=0
+            else : initial_sec-=10
+            
+        if command == 'next':
+            if initial_sec>=time_to_sec(video_len)-10:
+                initial_sec=time_to_sec(video_len)
+            else : initial_sec+=10
+            
+        if time_to_sec(op_start)<=initial_sec<=time_to_sec(op_end):
+            initial_sec=time_to_sec(op_end)
+        
+    result_min=initial_sec//60
+    result_sec=initial_sec%60
+    
+    #원래 내 풀이    
+    # if len(str(result_min))<=1:
+    #     result_min='0'+str(result_min)
+    # if len(str(result_sec))<=1:
+    #     result_sec='0'+str(result_sec)
+    
+    # answer = str(result_min)+':'+str(result_sec)
+    
+    answer = f'{result_min:02}:{result_sec:02}'
+    return answer
+
