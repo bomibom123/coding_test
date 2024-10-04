@@ -1,0 +1,31 @@
+def solution(friends, gifts):
+    answer = 0
+    l = len(friends)
+    result=[0]*l
+    gift_num=[0]*l
+    table = [[0]*l for _ in range(l)]
+    
+    #선물 주고 받은 테이블
+    for i in range(len(gifts)) :
+        each_gift=gifts[i].split()
+        table[friends.index(each_gift[0])][friends.index(each_gift[1])] += 1
+    
+    #선물 지수 테이블
+    for j in range(l):
+        for k in range(l):
+            gift_num[j] += table[j][k]
+            gift_num[j] -= table[k][j]
+    
+    for j in range (l-1) :
+        for k in range (j+1,l) :
+            if table[j][k]>table[k][j]:
+                result[j] += 1
+            elif table[j][k]==table[k][j]:
+                if gift_num[j] > gift_num[k]:
+                    result[j]+=1
+                elif gift_num[j] < gift_num[k]:
+                    result[k]+=1
+            else : result[k] += 1
+    
+    answer = max(result)
+    return answer
