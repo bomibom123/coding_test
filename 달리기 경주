@@ -1,0 +1,16 @@
+def solution(players, callings):
+    answer = []
+    l=len(callings)
+    players_index={a : i for i, a in enumerate(players)}
+    
+    
+    for i in range(l) :
+        cur_call= callings[i]
+        cur_index=players_index[cur_call]
+        prev_player=players[cur_index-1]
+        players[cur_index], players[cur_index-1] = players[cur_index-1], players[cur_index]
+        players_index[cur_call] -= 1
+        players_index[prev_player] += 1
+        
+    answer = players
+    return answer
