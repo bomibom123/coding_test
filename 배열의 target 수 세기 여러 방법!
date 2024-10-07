@@ -1,0 +1,28 @@
+import sys
+from collections import Counter
+n = int(sys.stdin.readline().rstrip())
+array = list(map(int,sys.stdin.readline().split()))
+target=int(sys.stdin.readline().rstrip())
+
+# 단순 탐색으로 풀기
+# result=0
+
+
+# for i in array:
+#   if i==target:
+#     result+=1
+    
+# print(result)
+
+# collections의 Counter 이용해서 배열 만들어서 풀기
+# dic = dict(Counter(array))
+# print(dic[target])
+
+# 직접 배열 만들어봐
+# set_arr = set(array)
+# dic = {key:0 for key in set_arr}
+
+# for i in array :
+#   dic[i] += 1
+  
+# print(dic[target])
